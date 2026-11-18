@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placa de Chladni — todas as variações</title>
+<meta name="description" content="Explorador interativo das figuras de Chladni: placas quadrada, retangular, circular, anular e superposição de modos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%230e1116%27/%3E%3Cpath d=%27M4 16h24M16 4v24M8 8l16 16M24 8L8 24%27 stroke=%27%23e6c98a%27 stroke-width=%272%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Placa de Chladni</h1>
+  <p>Areia sobre uma placa vibrando se acumula nas <em>linhas nodais</em>, onde o deslocamento é zero. Cada modo (m, n) desenha uma figura diferente.</p>
+</header>
+
+<main>
+  <section class="viewer">
+    <div class="stage">
+      <canvas id="canvas" width="560" height="560"></canvas>
+      <div id="loading" hidden>calculando…</div>
+    </div>
+
+    <div class="controls">
+      <label>Tipo de placa
+        <select id="plate"></select>
+      </label>
+
+      <div class="row">
+        <label><span id="lblM">m</span> <output id="oM">2</output>
+          <input id="m" type="range" min="0" max="10" value="2"></label>
+        <label><span id="lblN">n</span> <output id="oN">3</output>
+          <input id="n" type="range" min="0" max="10" value="3"></label>
+      </div>
+
+      <label id="signWrap">Simetria
+        <select id="sign"><option value="1">cos·cos + cos·cos (simétrico)</option><option value="-1">cos·cos − cos·cos (antissimétrico)</option></select>
+      </label>
+      <label id="aspectWrap">Proporção largura/altura <output id="oAspect">1.5</output>
+        <input id="aspect" type="range" min="0.5" max="3" step="0.05" value="1.5"></label>
+      <label id="mixWrap">Mistura dos modos <output id="oMix">0.5</output>
+        <input id="mix" type="range" min="-1" max="1" step="0.05" value="0.5"></label>
+      <label id="innerWrap">Raio interno <output id="oInner">0.35</output>
+        <input id="inner" type="range" min="0.1" max="0.8" step="0.05" value="0.35"></label>
+
+      <fieldset>
+        <legend>Visualização</legend>
+        <label><input type="radio" name="view" value="sand" checked> Areia</label>
+        <label><input type="radio" name="view" value="lines"> Linhas nodais</label>
+        <label><input type="radio" name="view" value="heat"> Deslocamento</label>
+        <label><input type="radio" name="view" value="vibe"> Vibrando</label>
+      </fieldset>
+
+      <div class="row">
+        <button id="shake">Sacudir areia</button>
+        <button id="sound">🔊 Som</button>
+      </div>
+      <p id="info"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Galeria de todas as variações</h2>
+    <p class="hint">Ordenadas pela frequência de ressonância (menor → maior). Clique em uma figura para abri-la acima.</p>
+    <label class="kmax">Ordem máxima <output id="oK">5</output>
+      <input id="kmax" type="range" min="2" max="8" value="5"></label>
+    <div id="gallery"></div>
+  </section>
+</main>
+
+<footer>
+  Python (numpy) + Vercel · <a href="https://github.com/RodrigoAiosa/PlacaChladni">RodrigoAiosa/PlacaChladni</a>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

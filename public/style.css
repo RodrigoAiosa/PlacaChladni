@@ -1,0 +1,32 @@
+:root{--bg:#0e1116;--panel:#171b22;--line:#2a313c;--fg:#e8e6df;--mute:#9aa3b0;--sand:#e6c98a;--accent:#e6c98a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header,main,footer{max-width:1100px;margin:0 auto;padding:0 20px}
+header{padding-top:32px}
+h1{margin:0 0 4px;font-size:2rem;letter-spacing:.02em}
+h2{margin:40px 0 4px}
+header p,.hint{color:var(--mute);margin:0 0 16px;max-width:70ch}
+.viewer{display:grid;grid-template-columns:minmax(0,560px) 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.viewer{grid-template-columns:1fr}}
+.stage{position:relative;background:#000;border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:1}
+canvas{width:100%;height:100%;display:block}
+#loading{position:absolute;inset:0;display:grid;place-items:center;background:#000a;color:var(--mute)}
+.controls{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px}
+.controls label{display:grid;gap:4px;color:var(--mute);font-size:.9rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select,button{background:#0e1116;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+button{cursor:pointer}button:hover,button.on{border-color:var(--accent);color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+output{color:var(--fg);font-variant-numeric:tabular-nums}
+fieldset{border:1px solid var(--line);border-radius:8px;display:flex;flex-wrap:wrap;gap:4px 14px}
+fieldset label{display:flex;align-items:center;gap:6px}
+legend{color:var(--mute);font-size:.85rem}
+#info{margin:0;color:var(--mute);font-size:.9rem}
+#gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin-top:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;cursor:pointer;text-align:center;font-size:.78rem;color:var(--mute)}
+.card:hover,.card.sel{border-color:var(--accent);color:var(--fg)}
+.card canvas{width:100%;aspect-ratio:auto;border-radius:6px;background:#000}
+.kmax{max-width:280px;display:grid;gap:4px;color:var(--mute);font-size:.9rem}
+footer{padding:40px 20px;color:var(--mute);font-size:.9rem}
+a{color:var(--accent)}
+[hidden]{display:none!important}
